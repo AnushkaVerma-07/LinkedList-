@@ -47,5 +47,5 @@ public class CircularLinkedList {
         obj.add(2);
         obj.add(3);
         obj.display();
-    }
+    }   
 }
