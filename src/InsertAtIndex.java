@@ -8,7 +8,7 @@ class Node {
     }
 }
 
-class InsertaAtIndex {
+class  InsertaAtIndex {
 
     // function to insert a Node at required position
     static Node insertPos(Node head, int pos, int data) {

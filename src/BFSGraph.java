@@ -58,7 +58,7 @@ class BFSGraph {
     }
 
     //depth first search
-    public static void dfs( ArrayList<Edge> graph[]; int current, boolean visited[]){
+    public static void dfs( ArrayList<Edge> graph[], int current, boolean visited[]){
         System.out.println(current+" ");
         visited[current] = true;
 
@@ -73,7 +73,7 @@ class BFSGraph {
 
     public static void allPaths(ArrayList<Edge> graph[], boolean visited[], int current, String Path, int target){
         if(current == target){
-            System.out.println(path);
+            System.out.println(Path);
             return;
         }
 
@@ -81,7 +81,7 @@ class BFSGraph {
             Edge e = graph[current].get(i);
             if(visited[current] == false){
                 visited[current] = true;
-                allPaths(graph.visited,e.dest, path+e.dest,target);
+                allPaths(graph,visited,e.dest, Path+e.dest,target);
                 visited[current] = false;
 
             }
@@ -90,7 +90,7 @@ class BFSGraph {
 
     //Cycle detection in directed graph
 
-    public static boolean cycleDirected(ArrayList<Edge> graph[], boolean visited[], int current, boolean recusion[]){
+    public static boolean cycleDirected(ArrayList<Edge> graph[], boolean[] visited, int current, boolean[] recusion){
         visited[current] = true;
         recusion[current] = true;
         for(int i = 0; i< graph[current].size(); i++){
@@ -98,7 +98,7 @@ class BFSGraph {
             if(recusion[e.dest]){
                 return true;
             } else if (!visited[e.dest]) {
-                if(cycleDirected(graph,visited,e.dest,recusion[]))
+                if(cycleDirected(graph,visited,e.dest,recusion))
                     return true;
             }
             recusion[current] = false;
@@ -128,7 +128,7 @@ class BFSGraph {
 
     public static void main(String[] args) {
         int V = 7;
-        ArrayList<Edge> graph[] = new ArrayList[V];
+        ArrayList<Edge>[] graph = new ArrayList[V];
         createGraph(graph);
 
         boolean visited[] = new boolean[V];
